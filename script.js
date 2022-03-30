@@ -5,8 +5,11 @@
 */
 
 (function() {
+    
+    // Récupération du paramètre COMPANY dans le URL
     var url = new URL(window.location.href);
     let company = url.searchParams.get("company");
+
     if(company !== null) {
 
         // NOTE Créer une image temporaire pour vérifier si elle existe dans le dossier "./company"
