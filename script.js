@@ -4,7 +4,7 @@
     Type de fichier: JS
 */
 
-(function() {
+(async function() {
     
     // Récupération du paramètre COMPANY dans le URL
     var url = new URL(window.location.href);
@@ -17,9 +17,20 @@
         companyImage.src = './company/'+company+".png";
         
         // L'image existe
-        companyImage.onload = () => {
+        companyImage.onload = async() => {
             document.getElementById('main').style.display = "block";
             document.getElementById('company_logo').src = companyImage.src;
+
+            // Ajouter un bouton personnalisé pour JOSY
+            if(company === 'josy'){
+                var element = document.createElement('div');
+                element.innerHTML = `
+                    <div class="card" style="margin-bottom: 15px; padding: 15px">
+                        <a href="https://www.wiibus.com/wp-content/uploads/2022/12/JOSY-CATAL_2023_150dpi.pdf"><div class="button-open">Ouvrir le catalogue de voyage</div></a>
+                    </div>
+                `
+                document.getElementById('main').prepend(element);
+            } 
         };
         
         // Image inéxistante
